@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "name": "SEO",
+        "img": "../../search.svg",
+        "footer": "Search Engine Optimization",
+        "desc": "Boost your website's search engine rankings and drive more organic traffic with our effective SEO strategies."
+    },
+    {
+        "id": 2,
+        "name": "Social Media Marketing",
+        "img": "../../instagram.svg",
+        "footer": "Social Media Marketing",
+        "desc": "Engage with your target audience and grow your brand on social media platforms like Facebook, Instagram, and Twitter."
+    },
+    {
+        "id": 3,
+        "name": "Email Marketing",
+        "img": "../../envelope.svg",
+        "footer": "Email Marketing",
+        "desc": "Build strong relationships with your customers and prospects by delivering personalized email campaigns that drive conversions."
+    },
+    {
+        "id": 4,
+        "name": "Affiliate Marketing",
+        "img": "../../link.svg",
+        "footer": "Affiliate Marketing",
+        "desc": "Increase your revenue by partnering with other businesses and promoting their products or services to your audience."
+    },
+    {
+        "id": 5,
+        "name": "Content Marketing",
+        "img": "../../file-text.svg",
+        "footer": "Content Marketing",
+        "desc": "Create valuable and relevant content that helps you attract and retain customers, and establish your brand as a thought leader in your industry."
+    }
+]
