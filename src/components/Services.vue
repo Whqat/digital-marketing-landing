@@ -242,7 +242,7 @@
 
     @keyframes fade-up {
         from {
-            visiblity: hidden;
+            visibility: hidden;
             transform: translateY(50px);
         }
         to {
