@@ -172,7 +172,7 @@
     .offcanvas.hide {
         display: none;
     }
-    /* .navbar {
+    .navbar {
         border-bottom: 2px solid white;
         --bs-navbar-toggler-border-color: none;
         --bs-navbar-toggler-focus-width: 0;
@@ -189,7 +189,7 @@
         color: $primary;
         backdrop-filter: blur(5px) brightness(30%);
         --bs-offcanvas-bg: #06000fa1;
-    } */
+    }
 
 
     .brand {
