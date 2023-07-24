@@ -28,13 +28,10 @@
           savvy marketers can help take your online presence to the next level.
         </p>
   
-        <a
-          href="/calendly"
-          class="text-decoration-none btn btn-outline-light my-4 mb-5"
-          target="_blank"
-        >
+        <router-link to="/calendly" class="text-decoration-none btn btn-outline-light my-4 mb-5" target="_blank">
           Schedule a Call
-      </a>
+        </router-link>
+          
       <i>Please only book a call if you're planning to attend it</i>
       </div>
     </div>
