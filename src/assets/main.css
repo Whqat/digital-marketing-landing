@@ -1,5 +1,40 @@
 @import './base.css';
-
 *, *::before, *::after {
-    font-family: "Roboto", 'Lato';
+  font-family: "Roboto", "sans-serif";
 }
+
+/* ANIMATIONS */
+.electric-animation {
+  position: relative;
+  color: #fff;
+  animation: electric 0.5s cubic-bezier(0.42, 2, 0.58, 3) infinite;
+}
+
+@keyframes electric {
+  0% {
+    text-shadow: 0 0 0 #0f0;
+    transform: rotate(0deg) translate(0px);
+  }
+  20% {
+    text-shadow: 1px -1px 0px #ff0, -1px 1px 1px #550;
+    transform: rotate(60deg) translate(-5px);
+  }
+  40% {
+    text-shadow: 1px -1px 1px #ff55e3, -1px 1px 1px #ee0;
+    transform: rotate(120deg) translate(-10px);
+  }
+  60% {
+    text-shadow: 0 0 1px #ff55e3;
+    transform: rotate(180deg) translate(-20px);
+  }
+  80% {
+    text-shadow: -1px -1px 0px #0ff, 1px 1px 1px #c0c0af;
+    transform: rotate(240deg) translate(-10px);
+  }
+  100% {
+    text-shadow: 0 0 0 #00f;
+    transform: rotate(360deg) translate(0px);
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

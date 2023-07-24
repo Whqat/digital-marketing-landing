@@ -1,12 +1,12 @@
 <template>
     <div
-        class="container-fluid py-5 my-1 mx-0"
-        style="background-color: rgb(1, 0, 21); border-bottom: 2px solid white; border-radius: 3px;"
+        id="reviews"
+        class="container-fluid py-5 mx-0"
         ref="containerRef"
     >
         <h1
             class="text-center my-5"
-            style="color: #e0e0fd; font-weight: 900; font-family: Roboto"
+            style="font-weight: 900; font-family: Roboto"
         >
             Reviews
         </h1>
@@ -85,8 +85,15 @@
     
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import "../assets/variables.scss";
+
+    h1 {
+        color: $primary;
+        text-shadow: 2px 2px 30px black;
+    }
     .review-header h3 {
+        text-shadow: 1px 1px 50px black;
         font-size: 1.25rem;
     }
 
@@ -97,20 +104,19 @@
 
     .review-card {
         transition: all 0.5s ease;
-        background-image: linear-gradient(#002, #001010, #000001);
-        color: #fafafa;
-        background-color: white;
+        color: $primary;
+        background-color: $secondary;
+        backdrop-filter: blur(5px);
         padding: 20px 30px;
-        border: 1px solid #e0e0fd;
+        border: 2px solid $primary;
     }
 
     .review-card:hover {
         transform: scale(1.01) translateY(-5px);
-        background-image: none !important;
-        background-color: black !important;
+        background-color: opacify($secondary, 0.7) !important;
         cursor: pointer;
-        box-shadow: 0px 0px 10px #846eb6 !important;
-
+        box-shadow: 0px 0px 10px #c71dff
+ !important;
     }
 
     @media screen and (max-width: 512px) {
@@ -146,11 +152,11 @@
 
     @keyframes fade-up {
         from {
-            opacity: 0;
+            visiblity: hidden;
             transform: translateY(50px);
         }
         to {
-            opacity: 1;
+            visibility: visible;
             transform: translateY(0);
         }
     }

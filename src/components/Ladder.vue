@@ -11,40 +11,31 @@
     };
 </script>
 
+
+<!-- CHANGES HERE -->
 <template>
-    <div class="container d-flex flex-wrap my-3 py-5 px-4 rounded border border-1 border-light">
-        <div class="row mb-5 mx-auto">
-            <div class="col-12 mb-5">
-                <h1 class="mt-1 mb-2">
-                    Ready to
+    <div class="container d-flex flex-wrap my-3 py-4 px-2 rounded shadow-lg">
+        <div class="row mx-auto">
+            <div class="col-12 mb-5 p-0 text-center border-bottom border-1 border-light">
+                <h1 class="my-1">
+                    
                     <strong
+                        class="electric-animation"
                         style="
                             font-family: 'Iceberg';
                             text-shadow: 0.5px 0.5px 0px #515185;
                         "
                         
-                        ><svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="26"
-                        height="26"
-                        fill="currentColor"
-                        class="bi bi-lightning-fill"
-                        viewBox="0 0 16 16"
-                        style="position: relative; bottom: 2px"
+                        >Ready to<i class="bi bi-lightning-fill"></i>BOOST Your Business?</strong
                     >
-                        <path
-                            d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5z"
-                        />
-                    </svg>BOOST</strong
-                    >
-                    Your Business?
+                    
                 </h1>
             </div>
         </div>
-        <div class="row mb-5 justify-content-evenly">
+        <div class="row mb-2 justify-content-evenly px-4 py-2">
 
 
-            <div class="col-7 col-md-6 col-lg-5" style="max-width: 100vw">
+            <div class="col-12 col-sm-6 col-md-6 col-lg-5">
                 <p>
                     At our digital marketing agency we specialize in helping
                     small and medium-sized businesses thrive. We understand that
@@ -55,7 +46,7 @@
                 </p>
             </div>
 
-            <div class="col-4 col-lg-4 d-flex align-items-center" style="height: 65%">
+            <div class="col-6 col-sm-6 col-md-5 col-lg-4 d-flex align-items-center" style="height: fit-content">
                 <img
                     class="img-fluid float-start me-3"
                     @load="onImgLoad"
@@ -67,19 +58,9 @@
 
         </div>
 
-        <div class="row mb-5 justify-content-evenly">
-
-
-            <div class="col-4 col-lg-4 d-flex align-items-center" style="height: 65%">
-                <img
-                    class="img-fluid float-start me-3"
-                    @load="onImgLoad"
-                    ref="imgRef"
-                    :src="imgSrc + 'digital-marketing-2.png'"
-                />
-            </div>
-
-            <div class="col-7 col-md-6 col-lg-4" style="max-width: 100vw">
+        <div class="row justify-content-evenly px-4 py-2">
+            
+            <div class="col-12 col-sm-6 col-md-6 col-lg-5" style="max-width: 100vw">
                 <p>
                     Our team of experts is dedicated to crafting bespoke social
                     media strategies that are tailored to your business's unique
@@ -89,7 +70,15 @@
                 </p>
             </div>
 
-            
+            <div class="col-6 col-sm-6 col-md-5 col-lg-4 d-flex align-items-center" style="height: fit-content">
+                <img
+                    class="img-fluid float-start me-3"
+                    @load="onImgLoad"
+                    ref="imgRef"
+                    :src="imgSrc + 'digital-marketing-2.png'"
+                />
+            </div>
+
         </div>
     </div>
     <div
@@ -102,17 +91,40 @@
             partner with us today and
             start seeing real results for your business.
         </p>
+        <div class="partner-button d-flex align-items-center justify-content-center">
+            <RouterLink to="/book" class="text-decoration-none button mx-auto px-5 py-2">Get Started</RouterLink>
+        </div>
     </div>
 </template>
 
-<style scoped>
-    h1 {
+<style scoped lang="scss">
+@import "../assets/variables.scss";
+
+    .button {
+        background-color: opacify($secondary, 0.7) !important;
+        color: $hover;
+        border: 2px solid $hover;
         font-weight: 900;
-        color: #e0e0fd;
+        transition: all 0.2s ease;
+        border-radius: 5px;
+        &:hover {
+            color: $hover;
+            border-color: $hover;
+            border-radius: 5px 5px 0 5px;
+            background-color: rgba(255, 255, 255, 0.033) !important;
+            transform: translateY(-5px);
+            box-shadow: 3px 6px 1px darken($hover, 5%);
+        }
+
+    }
+
+    h1 {
+      font-weight: 900;
+        text-shadow: 12px 12px 30px black;        color: $primary;
     }
 
     p {
-        color: #e0e0fd;
+        color: $primary;
     }
 
     img {
@@ -120,16 +132,22 @@
     }
 
     .container {
+        border: 2px solid white;
         transition: all 0.3s ease;
         width: 90%;
-        background-image: linear-gradient(#002, #002);
-        background-color: white;
-    }
+        background-image: linear-gradient(to right, $secondary, lighten($secondary, 10%));
+        background-color: $secondary;
+        backdrop-filter: blur(5px);
 
-    .container:hover {
-        box-shadow: 0px 0px 10px #846eb6 !important;
-        background-color: black !important;
-        background-image: none !important;
+        &:hover {
+            box-shadow: 0px 0px 10px #c71dff
+ !important;
+            background-color: opacify($secondary, 0.7) !important;
+            p, h1 {
+                color: $primary;
+            }
+        }
+
     }
 
     @media (max-width: 767px) {
@@ -175,32 +193,32 @@
     }
 
     .partner {
-        border: 1px inset white;
-        background-image: linear-gradient(#002, #001010, #000001);
-        background-color :#ffffff;
-        color: white;
+        background-color:$secondary;
+        color: $primary;
         width: 95%;
         transition: all 0.3s ease-in-out;
         cursor: pointer;
+        backdrop-filter: blur(5px);
+        border: 2px solid $primary;
+
     }
 
     .partner:hover {
-        transform: scale(1.01);
-        background-image: none !important;
         background-color: black !important;
-        box-shadow: 0px 0px 10px #846eb6 !important;
+        box-shadow: 0px 0px 10px #c71dff
+ !important;
         border: 1px solid white;
-
+        background-color: opacify($secondary, 0.75) !important;
     }
     .partner p {
-        color: white;
+        color: inherit;
         font-weight: 500;
     }
 
     .partner h4 {
-        color: white;
-        font-weight: 900;
-    }
+        color: inherit;
+      font-weight: 900;
+        text-shadow: 12px 12px 30px black;    }
 
     h4 {
         font-family: "Lato";

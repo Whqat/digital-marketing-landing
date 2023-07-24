@@ -1,12 +1,6 @@
 <script setup>
     import { computed, onMounted, onUnmounted, ref } from "vue";
 
-    const brandName = computed(() => {
-        return screenSize.value < 648
-            ? "BOOST Digital Marketing"
-            : "BOOST Digital Marketing Agency";
-    });
-
     const brandClass = computed(() => {
         return screenSize.value < 400
             ? "nav-link brand font-weight-bold"
@@ -26,27 +20,31 @@
     };
 
     const containerClass = computed(() => {
-        if (screenSize.value < 321)
-          return 'px-0'
-
-         else if (screenSize.value < 385) {
+        if (screenSize.value < 321) return "px-0";
+        else if (screenSize.value < 385) {
             return "px-1";
-        }
-         else if (screenSize.value < 400) {
+        } else if (screenSize.value < 400) {
             return "px-2";
-        }
-         else if (screenSize.value < 500) {
+        } else if (screenSize.value < 500) {
             return "px-3";
-        }
-         else if (screenSize.value < 600) {
+        } else if (screenSize.value < 600) {
             return "px-4";
-        }
-          else {
+        } else {
             return "px-5";
         }
     });
 
     onMounted(() => {
+        const navLinks = document.querySelectorAll(".nav-link");
+        const offcanvasCloseButton = document.querySelector(
+            "#offcanvasCloseButton"
+        );
+
+        navLinks.forEach((navLink) => {
+            navLink.addEventListener("click", () => {
+                offcanvasCloseButton.click();
+            });
+        });
         window.addEventListener("resize", handleResize);
     });
 
@@ -56,143 +54,182 @@
 </script>
 
 <template>
-    <div class="nav-background">
-        <div
-            :class="[
-                'container-fluid',
-                'p-1',
-                containerClass,
-                'd-flex',
-                'justify-content-between',
-                'align-items-center',
-            ]"
-        >
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
             <RouterLink :class="brandClass" aria-current="page" to="/">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="17"
-                    height="16.5"
-                    fill="currentColor"
-                    class="bi bi-lightning-fill"
-                    viewBox="0 0 16 16"
-                    style="position: relative; bottom: 2px"
-                >
-                    <path
-                        d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5z"
-                    />
-                </svg>
-                [[ brandName ]]
+                <strong class="brand">
+                    <i class="bi bi-lightning-fill"></i>
+                    BOOST Digital Marketing
+                </strong>
+
                 <span class="nav-link-underline"></span>
             </RouterLink>
-            <ul class="nav">
-                <li class="nav-item">
-                    <RouterLink
-                        :class="linkClass"
-                        v-scroll-to="'#services'"
-                        to="#services"
-                    >
-                        Services
-                        <span class="nav-link-underline"></span>
-                    </RouterLink>
-                </li>
-                <li class="nav-item">
-                    <RouterLink
-                        :class="linkClass"
-                        v-scroll-to="'#contact'"
-                        to="#contact"
-                    >
-                        Contact
-                        <span class="nav-link-underline"></span>
-                    </RouterLink>
-                </li>
-            </ul>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+                class="offcanvas offcanvas-end"
+                tabindex="-1"
+                id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel"
+                ref="offcanvasNavbarRef"
+            >
+                <div class="offcanvas-header text-white font-weight-bold">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                        Navigation
+                    </h5>
+                    <button
+                        id="offcanvasCloseButton"
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="offcanvas"
+                        aria-label="Close"
+                    ></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <RouterLink
+                                active-class="active__"
+                                :class="linkClass"
+                                to="/book"
+                            >
+                                Get Started
+                            </RouterLink>
+                        </li>
+                        <li class="nav-item">
+                            <RouterLink
+                                active-class="active__"
+                                :class="linkClass"
+                                v-scroll-to="'#process'"
+                                to="#process"
+                                data-bs-dismiss="offcanvas"
+                            >
+                                Our Process
+                            </RouterLink>
+                            <span class="nav-link-underline"></span>
+                        </li>
+                        <li class="nav-item">
+                            <RouterLink
+                                active-class="active__"
+                                :class="linkClass"
+                                v-scroll-to="'#reviews'"
+                                to="#reviews"
+                                data-bs-dismiss="offcanvas"
+                            >
+                                Reviews
+                            </RouterLink>
+                        </li>
+                        <li class="nav-item">
+                            <RouterLink
+                                active-class="active__"
+                                :class="linkClass"
+                                v-scroll-to="'#pricing'"
+                                to="#pricing"
+                                data-bs-dismiss="offcanvas"
+                            >
+                                Pricing
+                            </RouterLink>
+                        </li>
+                        <li class="nav-item">
+                            <RouterLink
+                                active-class="active__"
+                                :class="linkClass"
+                                v-scroll-to="'#services'"
+                                to="#services"
+                                data-bs-dismiss="offcanvas"
+                            >
+                                Services
+                            </RouterLink>
+                        </li>
+                        <li class="nav-item">
+                            <RouterLink
+                                active-class="active__"
+                                :class="linkClass"
+                                v-scroll-to="'#contact'"
+                                to="#contact"
+                                data-bs-dismiss="offcanvas"
+                            >
+                                Contact
+                            </RouterLink>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </div>
+    </nav>
 </template>
 
-<style scoped>
-    .nav-background {
-        background-color: #002;
-        border-bottom: 1px solid white;
+<style scoped lang="scss">
+    @import "../assets/variables.scss";
+
+    .offcanvas.hide {
+        display: none;
     }
-    .nav-item {
-        padding: 0;
-    }
-    .container-fluid {
-        font-family: "Lato";
-        max-width: 1200px;
-        background-color: #002;
+    .navbar {
+        border-bottom: 2px solid white;
+        --bs-navbar-toggler-border-color: none;
+        --bs-navbar-toggler-focus-width: 0;
+        --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     }
 
+    .btn-close {
+        --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
+        --bs-btn-close-opacity: 0.9
+        --bs-btn-close-focus-opacity: 0.3;
+    }
+
+    .offcanvas.show, .offcanvas.show-hiding, .offcanvas.showing{
+        color: $primary;
+        backdrop-filter: blur(5px) brightness(30%);
+        --bs-offcanvas-bg: #06000fa1;
+    }
+
+
     .brand {
-        font-family: "Iceberg";
-        text-decoration: none;
-        font-size: 10rem;
+        transition: all 0.5s ease;
+        font-family: "Iceberg", "sans-serif";
+        text-shadow: 0 0 1px $primary;
+        &:hover {
+            text-shadow: 0 0 0px black;
+        }
     }
 
     .nav-link {
-        transition: color 0.3s ease-in-out;
+        color: $primary;
         margin-right: 1rem;
         position: relative;
         text-decoration: none;
-        color: #e0e0fd;
-    }
-
-    .nav-link:hover {
-        color: #fff;
+        &:hover {
+            color: $hover;
+        }
+        &:active {
+            color: lighten($hover, 11%) !important;
+        }
+        &:focus {
+            color: lighten($hover, 11%) !important;
+        }
     }
 
     .nav-link > .nav-link-underline {
         position: absolute;
-        bottom: -4px;
+        bottom: -11.3px;
+        box-shadow: 0 0 10px white;
         left: 0;
         width: 0;
         height: 2px;
-        background-color: #fff;
+        background-color: $hover;
         border-radius: 0 0 16px 16px;
         transition: width 0.37s ease-in-out;
     }
 
-    .brand .nav-link-underline {
-        border-radius: 0 0 70px 70px;
-        bottom: -6px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    @media screen and (max-width: 600px) {
-        .brand .nav-link-underline {
-            bottom: -12px;
-        }
-        .nav-link:not(first-of-type) {
-            font-size: 0.8rem;
-            padding: 8px;
-        }
-    }
-
     .nav-link:hover > .nav-link-underline {
         width: 100%;
-    }
-
-    @media screen and (max-width: 424px) {
-        .brand {
-            font-size: 0.5rem;
-        }
-        .nav-link:not(.brand) {
-            font-size: 0.7rem;
-            padding: 5px;
-        }
-    }
-    @media screen and (max-width: 335px) {
-        .nav-link:not(.brand) {
-            font-size: 0.65rem;
-            padding: 4px;
-        }
-    }
-
-    @media screen and (max-width: 310px) {
-        .brand {
-            font-size: 0.7rem !important;
-        }
     }
 </style>

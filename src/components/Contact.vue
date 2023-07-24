@@ -3,7 +3,7 @@
         <h1
             id="contact"
             class="mt-5 text-center py-5"
-            style="color: #e0e0fd; font-weight: 900;"
+            style="font-weight: 900;"
         >
         Contact Us
         </h1>
@@ -29,11 +29,9 @@
     const address = ref("1234 Main St, Anytown USA");
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import "../assets/variables.scss";
 
-    .container-fluid {
-        background-color: rgb(1, 0, 21);
-    }
 
     .contact {
         max-width: 600px;
@@ -44,8 +42,10 @@
         background-color: #f9f9f9;
     }
 
-    h2 {
-        margin-top: 0;
+    h1 {
+        color: $primary;
+        text-shadow: 12px 12px 30px black;
+
     }
 
     ul {

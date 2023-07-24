@@ -1,5 +1,5 @@
 <template>
-    <div style="border-bottom: 2px solid white; border-radius: 3px;">
+    <div>
         <h1 id="services" class="text-center my-5">Our Services</h1>
         <div class="container-fluid" ref="containerRef">
             <div class="row text-center">
@@ -21,7 +21,7 @@
                         />
                         <p class="info position-absolute shadow-lg">i</p>
                         <div class="card-body position-relative">
-                            <h5 class="card-title" style="color: #e0e0fd">[[ service.name ]]</h5>
+                            <h5 class="card-title" style="color: $primary;">[[ service.name ]]</h5>
                         </div>
                     </div>
                 </div>
@@ -105,7 +105,8 @@
 
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import "../assets/variables.scss";
     .container {
         width: 100%;
     }
@@ -115,56 +116,50 @@
         height: 1.6em;
         top: 10px;
         right: 10px;
-        background-color: #e0e0fd;
-        color: #212155;
-        
+        background-color: $secondary;
+        backdrop-filter: blur(5px);
+        color: $primary;
+        border: 1px solid $primary;
         border-radius: 50%;
-        transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease;
+        &:hover {
+            color: black;
+            background-color: $primary;
+        }
     }
 
-    .info:hover {
-        color: white;
-        background-color: #000;
-        border: 1px solid white;
-    }
+    
 
     h1 {
-        color: #e0e0fd;
+        color: $primary;
         font-weight: 900;
+        text-shadow: 12px 12px 30px black;
     }
 
     .card {
-        transition: all 0.3s ease;
+        color: $primary;
+        transition: all 0.5s ease;
         border-radius: 15px;
         cursor: pointer;
-        background-image: linear-gradient(#000001 90%, #000);
-        border: 1px solid white;
-        background-color: white;
+        border: 2px solid $primary;
+        background-color: $secondary;
+        backdrop-filter: brightness(20%) blur(5px);
     }
     .card-img-top {
-        background-color: white;
         transition: all 0.3s ease;
         border-radius: 15px 15px 1px 1px;
-        /*background-image: linear-gradient(#002, #101010);*/
-        background-image: linear-gradient(#002, #001010, #000001);
-
     }
 
 
     .card:hover{
-        border: none;
-        background-image: none !important;
-        background-color: black !important;
+        background-color: opacify($secondary, 0.7) !important;
         transform: translateY(-5px) rotate(3deg) scale(1.1);
-        box-shadow: 0px 0px 10px #846eb6 !important;
+        box-shadow: 0px 0px 10px #c71dff !important;
+        .card-img-top {
+            transform: translateY(-5px);
+            transform: scale(0.9);
+        }
     }
-    .card:hover .card-img-top{
-        background-image: none !important;
-        background-color: black !important;
-        transform: translateY(-5px);
-    }
-    
-
     
     
     .card-body {
@@ -198,6 +193,7 @@
         background-color: rgba(0, 0, 0, 0.5);
         z-index: 999;
         display: none;
+        backdrop-filter: blur(5px);
     }
 
     .modal-wrapper.show {
@@ -210,13 +206,13 @@
         top: 45%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background-image: linear-gradient(#002, #001, #010);
         border: 1px solid white;
         width: 90%;
         padding: 50px;
         border-radius: 20px;
+        background-color: opacify($secondary, 0.7);
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        color: #e0e0fd;
+        color: $primary;
     }
 
     @media screen and (min-width: 756px) {
@@ -246,11 +242,11 @@
 
     @keyframes fade-up {
         from {
-            opacity: 0;
+            visiblity: hidden;
             transform: translateY(50px);
         }
         to {
-            opacity: 1;
+            visibility: visible;
             transform: translateY(0);
         }
     }
