@@ -1,37 +1,40 @@
-import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
+
   plugins: [
-    [vue({
+    vue({
       template: {
         compilerOptions: {
           delimiters: ['[[', ']]']
         }
       }
-    })],
+    })
   ],
-server: {
+
+  server: {
     middleware: [    
-       function (req, res, next) {
-         const type = {
-           '.html': 'text/html',
-           '.js': 'text/javascript',  
-           '.css': 'text/css'
-         }[path.extname(req.path)];
-         
-         if (type) {
-           res.setHeader('Content-Type', type);
-         }
-         
-         next();
-       }
-    ]    
-    resolve: {
-      alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url))
+      function (req, res, next) {
+        const type = {
+          '.html': 'text/html',
+          '.js': 'text/javascript',  
+          '.css': 'text/css'
+        }[path.extname(req.path)];
+        
+        if (type) {
+          res.setHeader('Content-Type', type);
+        }
+        
+        next();
       }
-    },
+   ]
+  },
+
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))  
+    }
   }
+
 })
