@@ -1,9 +1,10 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
+import { createWebHistory } from 'vue-router'
 import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
-  
+history: createWebHistory(import.meta.env.BASE_URL),
 server: {
     middleware: [    
       function (req, res, next) {
