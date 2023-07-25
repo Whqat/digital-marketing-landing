@@ -3,6 +3,25 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
+  
+server: {
+    middleware: [    
+      function (req, res, next) {
+        const type = {
+          '.html': 'text/html',
+          '.js': 'text/javascript',  
+          '.css': 'text/css'
+        }[path.extname(req.path)];
+        
+        if (type) {
+          res.setHeader('Content-Type', type);
+        }
+        
+        next();
+      }
+   ]
+  },
+  
   plugins: [
     [vue({
       template: {
