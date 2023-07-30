@@ -4,8 +4,8 @@ import { createWebHistory } from 'vue-router'
 import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
-history: createWebHistory(import.meta.env.BASE_URL),
-server: {
+  history: createWebHistory(import.meta.env.BASE_URL),
+  server: {
     middleware: [    
       function (req, res, next) {
         const type = {
@@ -37,4 +37,7 @@ server: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+  build: {
+    format: 'esm' // Add this line
+  }
 })
