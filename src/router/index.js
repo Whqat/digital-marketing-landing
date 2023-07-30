@@ -3,6 +3,7 @@ import HomeView from "../components/HomeView.vue";
 import BookView from "../components/BookView.vue";
 import Calendly from "../components/Calendly.vue"
 
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -12,21 +13,19 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/book',
+      path: '/book', 
       name: 'book',
-      component: BookView,
-      // children: [
-      //   {
-      //     path: 'calendly',
-      //     component: Calendly,
-      //   }
-      // ]
+      component: BookView
     },
     {
-
       path: "/calendly",
       name: "calendly",
-      component: Calendly,
+      component: Calendly
+    },
+    {
+      path: '/:catchAll(.*)',
+      name: 'NotFound',
+      component: Calendly
     }
   ]
 })
