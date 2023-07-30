@@ -37,7 +37,4 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-  build: {
-    format: 'esm' // Add this line
-  }
 })
