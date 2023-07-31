@@ -1,11 +1,11 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createMemoryHistory } from 'vue-router';
 import HomeView from "../components/HomeView.vue";
 import BookView from "../components/BookView.vue";
 import Calendly from "../components/Calendly.vue"
 
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createMemoryHistory(process.env.BASE_URL),
   routes: [
     {
       path: '/',
