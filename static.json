@@ -1,10 +1,7 @@
 {
-  "clean_urls": false,
-  "routes": [
-    {
-      "src": "/.*",
-      "serve": "/index.html",
-      "status": 200
+  "staticEndpoints": {
+    "/": {
+      "spa": "index.html"
     }
-  ]
+  }
 }
